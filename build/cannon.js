@@ -1,4 +1,4 @@
-// Tue, 10 Dec 2019 17:55:26 GMT
+// Wed, 11 Dec 2019 11:02:39 GMT
 
 /*
  * Copyright (c) 2015 cannon.js Authors
@@ -14481,11 +14481,13 @@ World.prototype.emitContactEvents = (function(){
             for (var i = 0, l = additions.length; i < l; i += 2) {
                 var shapeA = this.getShapeById(additions[i]);
                 var shapeB = this.getShapeById(additions[i+1]);
-                beginShapeContactEvent.shapeA = shapeA;
-                beginShapeContactEvent.shapeB = shapeB;
-                beginShapeContactEvent.bodyA = shapeA.body;
-                beginShapeContactEvent.bodyB = shapeB.body;
-                this.dispatchEvent(beginShapeContactEvent);
+                if (shapeA && shapeB) {
+                    beginShapeContactEvent.shapeA = shapeA;
+                    beginShapeContactEvent.shapeB = shapeB;
+                    beginShapeContactEvent.bodyA = shapeA.body;
+                    beginShapeContactEvent.bodyB = shapeB.body;
+                    this.dispatchEvent(beginShapeContactEvent);
+                }
             }
             beginShapeContactEvent.bodyA = beginShapeContactEvent.bodyB = beginShapeContactEvent.shapeA = beginShapeContactEvent.shapeB = null;
         }
