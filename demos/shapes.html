@@ -55,7 +55,7 @@
 
 
             // Cylinder shape
-            var cylinderShape = new CANNON.Cylinder(size,size,2*size,10);
+            var cylinderShape = new CANNON.Cylinder(size/2,size,2*size,5);
             var cylinderBody = new CANNON.Body({ mass: mass });
             cylinderBody.addShape(cylinderShape);
             cylinderBody.position.set(-size*2,size*2,size+1);

@@ -1,4 +1,4 @@
-// Wed, 11 Dec 2019 11:02:39 GMT
+// Fri, 20 Dec 2019 11:08:54 GMT
 
 /*
  * Copyright (c) 2015 cannon.js Authors
@@ -3161,6 +3161,12 @@ function ContactEquation(bodyA, bodyB, maxForce){
      * @property {Vec3} ni
      */
     this.ni = new Vec3();
+
+    /**
+     * Penetration vector
+     * @property {Vec3} penetrationVec
+     */
+    this.penetrationVec = new Vec3();
 }
 
 ContactEquation.prototype = new Equation();
@@ -3195,6 +3201,8 @@ ContactEquation.prototype.computeB = function(h){
         GB = this.jacobianElementB,
 
         n = this.ni;
+
+    this.penetrationVec = penetrationVec;
 
     // Caluclate cross products
     ri.cross(n,rixn);
